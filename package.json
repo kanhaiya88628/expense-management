@@ -2,9 +2,14 @@
   "name": "expense-management",
   "version": "1.0.0",
   "main": "server.js",
+  "private": "true",
+  "workspaces": [
+    "client"
+  ],
   "scripts": {
     "start": "node server.js",
-    "server": "nodemon server.js"
+    "server": "nodemon server.js",
+    "dev": "concurrently \"yarn server start\" \"yarn workspace client start\""
   },
   "repository": "https://github.com/kanhaiya88628/expense-management.git",
   "author": "Kanhaiya <kagrawal88628@gmail.com>",
@@ -17,5 +22,8 @@
     "mongoose": "^7.2.3",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.22"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0"
   }
 }

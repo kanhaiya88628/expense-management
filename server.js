@@ -1,5 +1,5 @@
-const express = require("express");
 const cors = require("cors");
+const express = require("express");
 const morgan = require("morgan");
 const dotenv = require("dotenv");
 const colors = require("colors");
@@ -20,9 +20,11 @@ app.use(express.json());
 app.use(cors());
 
 //routes
-app.get("/", (req, res) => {
-  res.send("<h1>hello from server</h1>");
-});
+//user routes
+app.use("/api/v1/users", require("./routes/userRoute"));
+
+//trans routes
+app.use("/api/v1/transactions", require("./routes/transactionRoute"));
 
 //port
 const PORT = 8080 || process.env.PORT;
